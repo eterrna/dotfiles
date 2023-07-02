@@ -54,7 +54,7 @@ floating_modifier Mod1
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+Return exec tilda
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -160,9 +160,9 @@ bindsym Mod1+Shift+9 move container to workspace number $ws9
 
 bindsym Print exec flameshot gui
 
-exec /home/eterna/.config/polybar/launch.sh --blocks
-bindsym mod1+d exec /home/eterna/.config/polybar/blocks/scripts/launcher.sh
-bindsym ctrl+f exec thunar
+exec polybar
+bindsym mod1+d exec rofi -show drun
+bindsym ctrl+f exec dolphin
 # class                 border  backgr. text    indicator child_border
 client.focused          #2E3440 #3B4252 #E5E9F0 #2E3440   #434C5E
 client.focused_inactive #3B4252 #434C5E #E5E9F0 #434C5E   #4C566A
@@ -173,5 +173,10 @@ client.placeholder      #2E3440 #434C5E #ECEFF4 #434C5E   #2E3440
 client.background       #ECEFF4
 bindsym $mod+q kill
 exec BackGround
-exec feh --bg-scale --zoom fill ~/Pictures/wallpaperflare.com_wallpapero.jpg
-bindsym $mod+Shift+p exec /home/eterna/.config/polybar/blocks/scripts/powermenu.sh
+exec --no-startup-id nitrogen --restore
+bindsym $mod+Shift+p exec rofi -show power-menu -modi power-menu:rofi-power-menu
+
+# reload the configuration file
+bindsym Mod1+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod1+Shift+r restart
